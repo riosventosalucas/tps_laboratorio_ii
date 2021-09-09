@@ -67,7 +67,6 @@ namespace Entidades
                 {
                     if (array[i] == '1')
                     {
-                        // Usamos la potencia de 2, según la posición
                         numeroDecimal += (int)Math.Pow(2, i);
                     }
                 }
