@@ -104,12 +104,15 @@ namespace Entidades
         /// <returns>(string) numeroBinario</returns>
         public string DecimalBinario(string numero)
         {
-            double aux1 = double.Parse(numero);
-            int aux = (int)aux1;
-            aux = Math.Abs(aux);
-            if (aux > 0)
+            double aux1;
+            if(double.TryParse(numero, out aux1))
             {
-                return this.DecimalBinario(aux);
+                int aux = (int)aux1;
+                aux = Math.Abs(aux);
+                if (aux > 0)
+                {
+                    return this.DecimalBinario(aux);
+                }
             }
             return "Valor invalido";
         }
@@ -190,7 +193,6 @@ namespace Entidades
             }
             return n1.numero / n2.numero;
         }
-
         #endregion
 
     }
