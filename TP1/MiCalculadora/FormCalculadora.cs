@@ -40,21 +40,26 @@ namespace MiCalculadora
                 string num1 = this.txtNumero1.Text;
                 string num2 = this.txtNumero2.Text;
                 string oper = this.cmbOperador.Text;
-                
+
+                Operando n1 = new Operando(num1);
+                Operando n2 = new Operando(num2);
+                double resultado;
+
                 char operador;
                 if (char.TryParse(oper, out operador))
                 {
-                    double resultado;
-
-                    Operando n1 = new Operando(num1);
-                    Operando n2 = new Operando(num2);
-
+                    resultado = Calculadora.Operar(n1, n2, operador);
+                }
+                else
+                {
                     resultado = Calculadora.Operar(n1, n2, operador);
 
-                    this.lblREsultado.Text = string.Format("{0:.##}", resultado);
-                    this.lstOperaciones.Items.Add(string.Format("{0} {1} {2} = {3:.##}", num1, operador, num2, resultado));
-                    this.ultimoResultado = resultado.ToString();
-                }               
+                    operador = '+';
+                }
+
+                this.lblREsultado.Text = string.Format("{0:.##}", resultado);
+                this.lstOperaciones.Items.Add(string.Format("{0} {1} {2} = {3:.##}", num1, operador, num2, resultado));
+                this.ultimoResultado = resultado.ToString();
             }
         }
 
@@ -75,10 +80,12 @@ namespace MiCalculadora
                 if(double.TryParse(this.ultimoResultado, out aux))
                 {
                     string numeroBinario = op.DecimalBinario(this.ultimoResultado);
+                    if (numeroBinario != this.ultimoResultado)
+                    {
+                        this.lstOperaciones.Items.Add(string.Format("{0:.##} a binario: {1}", aux, numeroBinario));
 
-                    this.lstOperaciones.Items.Add(string.Format("{0:.##} a binario: {1}", aux, numeroBinario));
-
-                    this.ultimoResultado = numeroBinario;
+                        this.ultimoResultado = numeroBinario;
+                    }
                 }
             }
         }

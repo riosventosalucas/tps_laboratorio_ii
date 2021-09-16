@@ -140,7 +140,11 @@ namespace Entidades
         /// <returns>(double) numero</returns>
         private double ValidarOperando(string strNumero)
         {
-            return double.Parse(strNumero);
+            double aux;
+            double.TryParse(strNumero, out aux);
+
+            return aux;
+
         }
         #endregion
 
