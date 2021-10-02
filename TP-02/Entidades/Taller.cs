@@ -13,6 +13,7 @@ namespace Entidades
     {
         List<Vehiculo> vehiculos;
         int espacioDisponible;
+
         public enum ETipo
         {
             Moto, Automovil, Camioneta, Todos
@@ -61,21 +62,15 @@ namespace Entidades
                 {
                     case ETipo.Camioneta:
                         if (v is Suv)
-                        {
                             sb.AppendLine(v.Mostrar());
-                        }
                         break;
                     case ETipo.Moto:
                         if (v is Ciclomotor)
-                        {
                             sb.AppendLine(v.Mostrar());
-                        }
                         break;
                     case ETipo.Automovil:
                         if (v is Sedan)
-                        {
                             sb.AppendLine(v.Mostrar());
-                        }
                         break;
                     default:
                         sb.AppendLine(v.Mostrar());

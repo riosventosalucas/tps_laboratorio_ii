@@ -29,10 +29,7 @@ namespace Entidades
         /// </summary>
         protected override ETamanio Tamanio
         {
-            get
-            {
-                return ETamanio.Mediano;
-            }
+            get { return ETamanio.Mediano; }
         }
 
         public override string Mostrar()
